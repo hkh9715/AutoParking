@@ -1,0 +1,12 @@
+#한건희
+#BGR to HSV transformation (due to legacy reasons of OpenCV)
+
+frame = cv2.imread('/home/pi/DeepPiCar/driver/data/road1_240x320.png') #file location+file name
+hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+#"lift" all the blueish colors from the image
+#Hue in 0 - 360 degrees scale
+
+lower_blue = np.array([60, 40, 40])
+upper_blue = np.array([150, 255, 255])
+mask = cv2.inRange(hsv, lower_blue, upper_blue)
